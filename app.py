@@ -12,195 +12,187 @@ st.set_page_config(
 )
 
 # ==============================================================================
-# OFFICIAL ARCH-FAB LOGO (Exact Vector Asset via Base64/Inline URI)
+# OFFICIAL ARCH-FAB LOGO (Base64 URI / Inline Vector Asset)
 # ==============================================================================
-ARCH_FAB_LOGO_SVG = """
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="70" height="70">
-  <defs>
-    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#A61C24" flood-opacity="0.35"/>
-    </filter>
-  </defs>
-  <!-- Parabolic Crimson Swoosh Arc -->
-  <path d="M 60,820 C 110,380 440,110 990,95 C 750,210 510,390 350,810 C 270,690 170,760 60,820 Z" fill="#A61C24" filter="url(#shadow)"/>
-  <!-- Bold Italic 'A' -->
-  <path d="M 230,860 L 510,140 L 680,140 L 920,860 L 760,860 L 700,680 L 450,680 L 390,860 Z M 490,540 L 660,540 L 575,280 Z" fill="#FFFFFF"/>
-  <!-- Overlapping Crimson 'F' (#A61C24) -->
-  <path d="M 620,380 L 990,380 L 990,495 L 770,495 L 770,580 L 950,580 L 950,685 L 770,685 L 770,890 L 620,890 Z" fill="#A61C24"/>
-</svg>
-"""
+ARCH_FAB_LOGO = (
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="72" height="72">'
+    '<path d="M 60,820 C 110,380 440,110 990,95 C 750,210 510,390 350,810 C 270,690 170,760 60,820 Z" fill="#A61C24"/>'
+    '<path d="M 230,860 L 510,140 L 680,140 L 920,860 L 760,860 L 700,680 L 450,680 L 390,860 Z M 490,540 L 660,540 L 575,280 Z" fill="#FFFFFF"/>'
+    '<path d="M 620,380 L 990,380 L 990,495 L 770,495 L 770,580 L 950,580 L 950,685 L 770,685 L 770,890 L 620,890 Z" fill="#A61C24"/>'
+    '</svg>'
+)
 
 # ==============================================================================
-# INDUSTRIAL HUD THEME (Crimson & Charcoal)
+# INDUSTRIAL HUD THEME (Arch-Fab Crimson #A61C24 & Deep Charcoal)
 # ==============================================================================
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
 
-    html, body, [class*="css"] {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .stApp {
-        background: radial-gradient(circle at 10% 5%, #18080a 0%, #0d0e12 35%, #050607 100%);
-        color: #f3f4f6;
-    }
+html, body, [class*="css"] {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
 
-    /* Top Command Header */
-    .command-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 24px;
-        background: rgba(18, 20, 26, 0.85);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 18px;
-        backdrop-filter: blur(20px);
-        margin-bottom: 22px;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
-    }
+.stApp {
+    background: radial-gradient(circle at 10% 5%, #18080a 0%, #0d0e12 35%, #050607 100%);
+    color: #f3f4f6;
+}
 
-    /* High Visibility Department Navigation Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 12px !important;
-        background: rgba(18, 20, 26, 0.95) !important;
-        padding: 8px 12px !important;
-        border-radius: 9999px !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        width: fit-content !important;
-        margin-bottom: 24px !important;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8) !important;
-    }
-    .stTabs [data-baseweb="tab"] {
-        border-radius: 9999px !important;
-        padding: 10px 26px !important;
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        transition: all 0.2s ease !important;
-    }
-    .stTabs [data-baseweb="tab"] p, 
-    .stTabs [data-baseweb="tab"] div,
-    .stTabs [data-baseweb="tab"] span {
-        color: #e2e8f0 !important;
-        font-weight: 800 !important;
-        font-size: 0.95rem !important;
-    }
-    .stTabs [data-baseweb="tab"]:hover {
-        background: rgba(166, 28, 36, 0.25) !important;
-        border-color: rgba(166, 28, 36, 0.6) !important;
-    }
-    .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #8B141B 0%, #A61C24 60%, #C42630 100%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        box-shadow: 0 4px 20px rgba(166, 28, 36, 0.65) !important;
-    }
-    .stTabs [aria-selected="true"] p,
-    .stTabs [aria-selected="true"] div,
-    .stTabs [aria-selected="true"] span {
-        color: #ffffff !important;
-        font-weight: 900 !important;
-    }
+/* Command Header Container */
+.command-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: rgba(18, 20, 26, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    backdrop-filter: blur(20px);
+    margin-bottom: 22px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+}
 
-    /* High-Vis HUD Stat Cards */
-    .hud-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(166, 28, 36, 0.06) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 18px;
-        padding: 22px 24px;
-        backdrop-filter: blur(18px);
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65);
-        margin-bottom: 20px;
-    }
-    .hud-title {
-        font-size: 0.8rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #94a3b8;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .hud-value {
-        font-size: 2.3rem;
-        font-weight: 900;
-        color: #ffffff;
-        margin: 8px 0 6px 0;
-        line-height: 1.1;
-    }
-    .bar-bg {
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 9999px;
-        height: 8px;
-        overflow: hidden;
-        margin-top: 10px;
-    }
-    .bar-fill {
-        background: linear-gradient(90deg, #8B141B 0%, #A61C24 65%, #EF4444 100%);
-        height: 100%;
-        border-radius: 9999px;
-    }
+/* Top Navigation Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 12px !important;
+    background: rgba(18, 20, 26, 0.95) !important;
+    padding: 8px 12px !important;
+    border-radius: 9999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    width: fit-content !important;
+    margin-bottom: 24px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8) !important;
+}
+.stTabs [data-baseweb="tab"] {
+    border-radius: 9999px !important;
+    padding: 10px 26px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    transition: all 0.2s ease !important;
+}
+.stTabs [data-baseweb="tab"] p, 
+.stTabs [data-baseweb="tab"] div,
+.stTabs [data-baseweb="tab"] span {
+    color: #e2e8f0 !important;
+    font-weight: 800 !important;
+    font-size: 0.95rem !important;
+}
+.stTabs [data-baseweb="tab"]:hover {
+    background: rgba(166, 28, 36, 0.25) !important;
+    border-color: rgba(166, 28, 36, 0.6) !important;
+}
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #8B141B 0%, #A61C24 60%, #C42630 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 20px rgba(166, 28, 36, 0.65) !important;
+}
+.stTabs [aria-selected="true"] p,
+.stTabs [aria-selected="true"] div,
+.stTabs [aria-selected="true"] span {
+    color: #ffffff !important;
+    font-weight: 900 !important;
+}
 
-    .badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 4px 11px;
-        border-radius: 9999px;
-        font-size: 0.72rem;
-        font-weight: 800;
-    }
-    .badge-crimson {
-        background: rgba(166, 28, 36, 0.25);
-        color: #fca5a5;
-        border: 1px solid rgba(166, 28, 36, 0.55);
-    }
-    .badge-dark {
-        background: rgba(255, 255, 255, 0.08);
-        color: #e2e8f0;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .badge-green {
-        background: rgba(34, 197, 94, 0.18);
-        color: #4ade80;
-        border: 1px solid rgba(34, 197, 94, 0.4);
-    }
-    .badge-orange {
-        background: rgba(249, 115, 22, 0.18);
-        color: #fb923c;
-        border: 1px solid rgba(249, 115, 22, 0.4);
-    }
+/* Metric Cards */
+.hud-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(166, 28, 36, 0.06) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 22px 24px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65);
+    margin-bottom: 20px;
+}
+.hud-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hud-value {
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0 6px 0;
+    line-height: 1.1;
+}
+.bar-bg {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    height: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.bar-fill {
+    background: linear-gradient(90deg, #8B141B 0%, #A61C24 65%, #EF4444 100%);
+    height: 100%;
+    border-radius: 9999px;
+}
 
-    /* Queue Row Cards for Master Tab */
-    .queue-row {
-        background: rgba(18, 20, 26, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        border-left: 4px solid #A61C24;
-        border-radius: 12px;
-        padding: 14px 18px;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 11px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+.badge-crimson {
+    background: rgba(166, 28, 36, 0.25);
+    color: #fca5a5;
+    border: 1px solid rgba(166, 28, 36, 0.55);
+}
+.badge-dark {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.badge-green {
+    background: rgba(34, 197, 94, 0.18);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+.badge-orange {
+    background: rgba(249, 115, 22, 0.18);
+    color: #fb923c;
+    border: 1px solid rgba(249, 115, 22, 0.4);
+}
 
-    /* High-Density Modern Dataframe Overrides */
-    [data-testid="stDataFrame"] {
-        border-radius: 16px;
-        border: 1px solid #1e293b;
-        background: #090c12;
-        overflow: hidden;
-    }
+.queue-row {
+    background: rgba(18, 20, 26, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-left: 4px solid #A61C24;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .stButton > button {
-        background: linear-gradient(135deg, #8B141B 0%, #A61C24 60%, #C42630 100%) !important;
-        color: #ffffff !important;
-        font-weight: 800 !important;
-        border-radius: 12px !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        padding: 10px 22px !important;
-        box-shadow: 0 4px 16px rgba(166, 28, 36, 0.4) !important;
-    }
-    header, #MainMenu, footer { visibility: hidden; }
+[data-testid="stDataFrame"] {
+    border-radius: 16px;
+    border: 1px solid #1e293b;
+    background: #090c12;
+    overflow: hidden;
+}
+
+.stButton > button {
+    background: linear-gradient(135deg, #8B141B 0%, #A61C24 60%, #C42630 100%) !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 10px 22px !important;
+    box-shadow: 0 4px 16px rgba(166, 28, 36, 0.4) !important;
+}
+
+header, #MainMenu, footer { visibility: hidden; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -236,32 +228,33 @@ master_data = master_data_raw.get("data") if master_data_raw and "data" in maste
 powder_data = fetch_api_data(powder_script_url)
 
 # ==============================================================================
-# HEADER WITH OFFICIAL LOGO
+# COMMAND HEADER (Zero-Indent Construction)
 # ==============================================================================
 h_left, h_right = st.columns([4, 1.2])
 
 with h_left:
-    st.markdown(f"""
-    <div class="command-header">
-        <div style="display:flex; align-items:center; gap:18px;">
-            {ARCH_FAB_LOGO_SVG}
-            <div>
-                <div style="font-size:1.6rem; font-weight:900; letter-spacing:-0.03em; color:#ffffff; line-height:1.1;">
-                    ARCHITECTURAL FABRICATION
-                </div>
-                <div style="font-size:0.85rem; font-weight:600; color:#9ca3af; letter-spacing:0.04em;">
-                    OPERATIONS COMMAND CENTER &bull; PLANT DISPATCH
-                </div>
-            </div>
-        </div>
-        <div>
-            <span class="badge badge-green">
-                <span style="height:7px; width:7px; background:#4ade80; border-radius:50%; display:inline-block; margin-right:6px; box-shadow:0 0 8px #4ade80;"></span>
-                LIVE SYNC
-            </span>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    header_html = (
+        '<div class="command-header">'
+        '<div style="display:flex; align-items:center; gap:18px;">'
+        f'{ARCH_FAB_LOGO}'
+        '<div>'
+        '<div style="font-size:1.6rem; font-weight:900; letter-spacing:-0.03em; color:#ffffff; line-height:1.1;">'
+        'ARCHITECTURAL FABRICATION'
+        '</div>'
+        '<div style="font-size:0.85rem; font-weight:600; color:#9ca3af; letter-spacing:0.04em;">'
+        'OPERATIONS COMMAND CENTER &bull; PLANT DISPATCH'
+        '</div>'
+        '</div>'
+        '</div>'
+        '<div>'
+        '<span class="badge badge-green">'
+        '<span style="height:7px; width:7px; background:#4ade80; border-radius:50%; display:inline-block; margin-right:6px; box-shadow:0 0 8px #4ade80;"></span>'
+        'LIVE SYNC'
+        '</span>'
+        '</div>'
+        '</div>'
+    )
+    st.markdown(header_html, unsafe_allow_html=True)
 
 with h_right:
     st.write("")
@@ -299,42 +292,46 @@ with tab_master:
 
     k1, k2, k3, k4 = st.columns(4)
     with k1:
-        st.markdown(f"""
-        <div class="hud-card">
-            <div class="hud-title">Hardware Staging <span class="badge badge-crimson">{hw_pct}%</span></div>
-            <div class="hud-value">{hw_comp} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {hw_total}</span></div>
-            <span class="badge badge-dark">{(hw_total - hw_comp)} Pending Action</span>
-            <div class="bar-bg"><div class="bar-fill" style="width: {hw_pct}%;"></div></div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="hud-card">'
+            f'<div class="hud-title">Hardware Staging <span class="badge badge-crimson">{hw_pct}%</span></div>'
+            f'<div class="hud-value">{hw_comp} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {hw_total}</span></div>'
+            f'<span class="badge badge-dark">{(hw_total - hw_comp)} Pending Action</span>'
+            f'<div class="bar-bg"><div class="bar-fill" style="width: {hw_pct}%;"></div></div>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
     with k2:
-        st.markdown(f"""
-        <div class="hud-card">
-            <div class="hud-title">Powder Queue <span class="badge badge-crimson">{pow_pct}%</span></div>
-            <div class="hud-value">{pow_comp} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {pow_total}</span></div>
-            <span class="badge badge-orange">{pow_sum.get('required', 0)} Runs Active</span>
-            <div class="bar-bg"><div class="bar-fill" style="width: {pow_pct}%;"></div></div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="hud-card">'
+            f'<div class="hud-title">Powder Queue <span class="badge badge-crimson">{pow_pct}%</span></div>'
+            f'<div class="hud-value">{pow_comp} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {pow_total}</span></div>'
+            f'<span class="badge badge-orange">{pow_sum.get("required", 0)} Runs Active</span>'
+            f'<div class="bar-bg"><div class="bar-fill" style="width: {pow_pct}%;"></div></div>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
     with k3:
-        st.markdown(f"""
-        <div class="hud-card">
-            <div class="hud-title">Logistics Trucks <span class="badge badge-crimson">{log_pct}%</span></div>
-            <div class="hud-value">{log_loaded} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {log_total}</span></div>
-            <span class="badge badge-dark">{log.get('pending', 0)} Scheduled</span>
-            <div class="bar-bg"><div class="bar-fill" style="width: {log_pct}%;"></div></div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="hud-card">'
+            f'<div class="hud-title">Logistics Trucks <span class="badge badge-crimson">{log_pct}%</span></div>'
+            f'<div class="hud-value">{log_loaded} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {log_total}</span></div>'
+            f'<span class="badge badge-dark">{log.get("pending", 0)} Scheduled</span>'
+            f'<div class="bar-bg"><div class="bar-fill" style="width: {log_pct}%;"></div></div>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
     with k4:
         plant_pct = int((hw_pct + pow_pct + log_pct) / 3) if hw_total > 0 else 0
-        st.markdown(f"""
-        <div class="hud-card">
-            <div class="hud-title">Master Feed <span class="badge badge-green">ONLINE</span></div>
-            <div class="hud-value">{plant_pct}%</div>
-            <span class="badge badge-dark">Sync: {datetime.now().strftime('%I:%M %p')}</span>
-            <div class="bar-bg"><div class="bar-fill" style="width: {plant_pct}%;"></div></div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="hud-card">'
+            f'<div class="hud-title">Master Feed <span class="badge badge-green">ONLINE</span></div>'
+            f'<div class="hud-value">{plant_pct}%</div>'
+            f'<span class="badge badge-dark">Sync: {datetime.now().strftime("%I:%M %p")}</span>'
+            f'<div class="bar-bg"><div class="bar-fill" style="width: {plant_pct}%;"></div></div>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
 
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
 
@@ -347,15 +344,16 @@ with tab_master:
                 is_done = item.get("hwStatus", "").lower() == "complete"
                 badge_class = "badge-green" if is_done else "badge-crimson"
                 status_txt = "COMPLETE" if is_done else "REQUIRED"
-                st.markdown(f"""
-                <div class="queue-row">
-                    <div>
-                        <div style="font-weight:700; color:#ffffff; font-size:0.95rem;">{item.get('woName')} &bull; {item.get('release')}</div>
-                        <div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">Item: {item.get('itemNumber', 'Hardware')} &bull; Due: {item.get('dueDate')}</div>
-                    </div>
-                    <span class="badge {badge_class}">{status_txt}</span>
-                </div>
-                """, unsafe_allow_html=True)
+                st.markdown(
+                    f'<div class="queue-row">'
+                    f'<div>'
+                    f'<div style="font-weight:700; color:#ffffff; font-size:0.95rem;">{item.get("woName")} &bull; {item.get("release")}</div>'
+                    f'<div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">Item: {item.get("itemNumber", "Hardware")} &bull; Due: {item.get("dueDate")}</div>'
+                    f'</div>'
+                    f'<span class="badge {badge_class}">{status_txt}</span>'
+                    f'</div>',
+                    unsafe_allow_html=True
+                )
         else:
             st.info("No active hardware jobs found.")
 
@@ -367,15 +365,16 @@ with tab_master:
                 is_loaded = item.get("isLoaded", False)
                 status_txt = "LOADED" if is_loaded else "SCHEDULED"
                 badge_class = "badge-green" if is_loaded else "badge-crimson"
-                st.markdown(f"""
-                <div class="queue-row">
-                    <div>
-                        <div style="font-weight:700; color:#ffffff; font-size:0.95rem;">{item.get('reqName')} &bull; {item.get('project')}</div>
-                        <div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">Superintendent: {item.get('superintendent', 'N/A')} &bull; Date: {item.get('loadDate')}</div>
-                    </div>
-                    <span class="badge {badge_class}">{status_txt}</span>
-                </div>
-                """, unsafe_allow_html=True)
+                st.markdown(
+                    f'<div class="queue-row">'
+                    f'<div>'
+                    f'<div style="font-weight:700; color:#ffffff; font-size:0.95rem;">{item.get("reqName")} &bull; {item.get("project")}</div>'
+                    f'<div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">Superintendent: {item.get("superintendent", "N/A")} &bull; Date: {item.get("loadDate")}</div>'
+                    f'</div>'
+                    f'<span class="badge {badge_class}">{status_txt}</span>'
+                    f'</div>',
+                    unsafe_allow_html=True
+                )
         else:
             st.info("No active logistics loadouts found.")
 
@@ -383,10 +382,8 @@ with tab_master:
 # TAB 2: POWDER COATING SHOP FLOOR DISPATCH (NATIVE HIGH-PERFORMANCE GRID)
 # ==============================================================================
 with tab_powder:
-    # 1. Pull jobs from the powder endpoint
     dispatch_raw = powder_data.get("jobs", []) if powder_data and "jobs" in powder_data else []
 
-    # 2. Fallback to Master Data powder jobs if dispatch tab isn't populated yet
     if not dispatch_raw and master_data and "powder" in master_data:
         for idx, p in enumerate(master_data.get("powder", [])):
             dispatch_raw.append({
@@ -401,7 +398,6 @@ with tab_powder:
                 "priority": "5: Target Account (T)" if p.get("isPriority") else "6: Standard"
             })
 
-    # Prepare DataFrame and sanitize text (replaces raw newlines)
     clean_records = []
     for j in dispatch_raw:
         color_clean = str(j.get("color", "Standard")).replace("\n", " / ").strip()
@@ -428,7 +424,6 @@ with tab_powder:
     total_qty = int(df_powder["Qty (Units)"].sum()) if not df_powder.empty else 0
     total_crew = round(df_powder["Crew Hrs"].sum(), 1) if not df_powder.empty else 0.0
 
-    # Trigger & Header Controls
     p_head, p_act = st.columns([3, 1.2])
     with p_head:
         st.markdown("<h3 style='margin:0; font-weight:800;'>🎨 Powder Coating Shop Floor Dispatch Dashboard</h3>", unsafe_allow_html=True)
@@ -445,32 +440,16 @@ with tab_powder:
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
 
     if not df_powder.empty:
-        # Native Interactive Dataframe with Status Pills and Progress
         st.dataframe(
             df_powder,
             use_container_width=True,
             hide_index=True,
             column_config={
-                "Seq": st.column_config.NumberColumn(
-                    "SEQ",
-                    width="small"
-                ),
-                "Powder Color (Gang)": st.column_config.TextColumn(
-                    "POWDER COLOR (GANG)",
-                    width="medium"
-                ),
-                "Work Order": st.column_config.TextColumn(
-                    "WORK ORDER",
-                    width="small"
-                ),
-                "Release Name": st.column_config.TextColumn(
-                    "PRODUCTION RELEASE NAME",
-                    width="large"
-                ),
-                "WO Item": st.column_config.TextColumn(
-                    "WO ITEM",
-                    width="small"
-                ),
+                "Seq": st.column_config.NumberColumn("SEQ", width="small"),
+                "Powder Color (Gang)": st.column_config.TextColumn("POWDER COLOR (GANG)", width="medium"),
+                "Work Order": st.column_config.TextColumn("WORK ORDER", width="small"),
+                "Release Name": st.column_config.TextColumn("PRODUCTION RELEASE NAME", width="large"),
+                "WO Item": st.column_config.TextColumn("WO ITEM", width="small"),
                 "Qty (Units)": st.column_config.ProgressColumn(
                     "QTY (UNITS)",
                     format="%d",
@@ -478,30 +457,19 @@ with tab_powder:
                     max_value=max(int(df_powder["Qty (Units)"].max() or 1), 20),
                     width="small"
                 ),
-                "Est. Batches": st.column_config.NumberColumn(
-                    "EST. BATCHES",
-                    format="%.2f",
-                    width="small"
-                ),
-                "Crew Hrs": st.column_config.NumberColumn(
-                    "CREW HRS",
-                    format="%.1f hrs",
-                    width="small"
-                ),
-                "Priority Tier": st.column_config.TextColumn(
-                    "PRIORITY TIER",
-                    width="medium"
-                )
+                "Est. Batches": st.column_config.NumberColumn("EST. BATCHES", format="%.2f", width="small"),
+                "Crew Hrs": st.column_config.NumberColumn("CREW HRS", format="%.1f hrs", width="small"),
+                "Priority Tier": st.column_config.TextColumn("PRIORITY TIER", width="medium")
             }
         )
 
-        # High-Vis Footer Bar Matching Spreadsheet
-        st.markdown(f"""
-        <div style="background:#0b0f19; border:1px solid #1e293b; border-radius:12px; padding:12px 18px; margin-top:10px; display:flex; justify-content:space-between; font-size:0.78rem; font-weight:800; letter-spacing:0.06em; color:#94a3b8;">
-            <div>TOTAL DISPATCHED WORK ORDERS: <span style="color:#ffffff;">{total_jobs}</span> &bull; TOTAL SCHEDULED QUANTITY: <span style="color:#ffffff;">{total_qty} UNITS</span></div>
-            <div>TOTAL ACTIVE CREW HOURS: <span style="color:#38bdf8; font-size:0.95rem;">{total_crew} HRS</span></div>
-        </div>
-        """, unsafe_allow_html=True)
+        footer_html = (
+            '<div style="background:#0b0f19; border:1px solid #1e293b; border-radius:12px; padding:12px 18px; margin-top:10px; display:flex; justify-content:space-between; font-size:0.78rem; font-weight:800; letter-spacing:0.06em; color:#94a3b8;">'
+            f'<div>TOTAL DISPATCHED WORK ORDERS: <span style="color:#ffffff;">{total_jobs}</span> &bull; TOTAL SCHEDULED QUANTITY: <span style="color:#ffffff;">{total_qty} UNITS</span></div>'
+            f'<div>TOTAL ACTIVE CREW HOURS: <span style="color:#38bdf8; font-size:0.95rem;">{total_crew} HRS</span></div>'
+            '</div>'
+        )
+        st.markdown(footer_html, unsafe_allow_html=True)
     else:
         st.info("No jobs currently in active dispatch queue.")
 
