@@ -4,9 +4,9 @@
   },
   "Powder Coating": [
     {
-      "name": "Run Batch & Labor Analysis",
+      "name": "Powder Coating Dispatch & Labor Engine",
       "url": "https://script.google.com/macros/s/AKfycbyDfbAgKHr30bOwnGJdw2tIoPJaohFlthaYprU20sXeuKq7lfbAtjKGEaiYlftGegYYJw/exec",
-      "description": "Aggregates actual labor hours and powder batches across work orders, priorities, and schedule status."
+      "description": "Serves active shop floor dispatch queue and executes batch & labor analysis."
     }
   ]
 }
