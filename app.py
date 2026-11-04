@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 import json
-import os
 import pandas as pd
 from datetime import datetime
 
@@ -24,7 +23,7 @@ st.markdown("""
     }
     
     .stApp {
-        background: radial-gradient(circle at 10% 5%, #18080a 0%, #0d0e12 35%, #050607 100%);
+        background: radial-gradient(circle at 12% 8%, #1a080a 0%, #0c0d10 40%, #060607 100%);
         color: #f3f4f6;
     }
 
@@ -34,74 +33,152 @@ st.markdown("""
         align-items: center;
         justify-content: space-between;
         padding: 16px 24px;
-        background: rgba(18, 20, 26, 0.75);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(18, 20, 26, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 20px;
         backdrop-filter: blur(20px);
         margin-bottom: 22px;
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
     }
 
-    /* Floating Navigation Tabs */
+    /* PROMINENT HIGH-VISIBILITY NAVIGATION TABS */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 10px;
-        background: rgba(14, 16, 20, 0.9);
-        padding: 8px 12px;
-        border-radius: 9999px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        width: fit-content;
-        margin-bottom: 24px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+        gap: 12px !important;
+        background: rgba(18, 20, 26, 0.95) !important;
+        padding: 8px 12px !important;
+        border-radius: 9999px !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        width: fit-content !important;
+        margin-bottom: 26px !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8) !important;
     }
+    
+    /* Inactive Tab Pill: Bright White/Gray & Visible */
     .stTabs [data-baseweb="tab"] {
-        border-radius: 9999px;
-        padding: 10px 24px;
-        color: #9ca3af;
-        border: 1px solid transparent !important;
-        font-weight: 700;
-        font-size: 0.92rem;
+        border-radius: 9999px !important;
+        padding: 10px 26px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        transition: all 0.2s ease !important;
     }
+    .stTabs [data-baseweb="tab"] p, 
+    .stTabs [data-baseweb="tab"] div,
+    .stTabs [data-baseweb="tab"] span {
+        color: #e2e8f0 !important;
+        font-weight: 800 !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.02em !important;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        background: rgba(166, 28, 36, 0.25) !important;
+        border-color: rgba(166, 28, 36, 0.6) !important;
+    }
+
+    /* Active Tab Pill: Arch-Fab Crimson */
     .stTabs [aria-selected="true"] {
         background: linear-gradient(135deg, #8B141B 0%, #A61C24 60%, #C42630 100%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        box-shadow: 0 4px 20px rgba(166, 28, 36, 0.65) !important;
+    }
+    .stTabs [aria-selected="true"] p,
+    .stTabs [aria-selected="true"] div,
+    .stTabs [aria-selected="true"] span {
         color: #ffffff !important;
-        box-shadow: 0 4px 18px rgba(166, 28, 36, 0.55);
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        font-weight: 900 !important;
     }
 
     /* High-Vis HUD Stat Cards */
     .hud-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0%, rgba(166, 28, 36, 0.05) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(166, 28, 36, 0.06) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 18px;
-        padding: 20px 22px;
+        padding: 22px 24px;
         backdrop-filter: blur(18px);
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
-        transition: transform 0.2s ease, border-color 0.2s ease;
-        margin-bottom: 16px;
-    }
-    .hud-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(166, 28, 36, 0.6);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65);
+        margin-bottom: 20px;
     }
     .hud-title {
-        font-size: 0.78rem;
-        font-weight: 700;
+        font-size: 0.8rem;
+        font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: #9ca3af;
+        color: #94a3b8;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
     .hud-value {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         font-weight: 900;
         color: #ffffff;
         margin: 8px 0 6px 0;
         line-height: 1.1;
     }
 
-    /* Grid Dispatch Table Styling */
+    /* Progress Indicators */
+    .bar-bg {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 9999px;
+        height: 8px;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+    .bar-fill {
+        background: linear-gradient(90deg, #8B141B 0%, #A61C24 65%, #EF4444 100%);
+        height: 100%;
+        border-radius: 9999px;
+        box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+    }
+
+    /* Badges */
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 11px;
+        border-radius: 9999px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+    }
+    .badge-crimson {
+        background: rgba(166, 28, 36, 0.25);
+        color: #fca5a5;
+        border: 1px solid rgba(166, 28, 36, 0.55);
+    }
+    .badge-dark {
+        background: rgba(255, 255, 255, 0.08);
+        color: #e2e8f0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .badge-green {
+        background: rgba(34, 197, 94, 0.18);
+        color: #4ade80;
+        border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+    .badge-orange {
+        background: rgba(249, 115, 22, 0.18);
+        color: #fb923c;
+        border: 1px solid rgba(249, 115, 22, 0.4);
+    }
+
+    /* Queue Row Cards */
+    .queue-row {
+        background: rgba(18, 20, 26, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-left: 4px solid #A61C24;
+        border-radius: 12px;
+        padding: 14px 18px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .queue-row:hover {
+        background: rgba(28, 30, 38, 0.9);
+        border-color: rgba(166, 28, 36, 0.5);
+    }
+
+    /* Dispatch Grid Table Styling */
     .dispatch-header {
         background: #0f172a;
         border: 1px solid #1e293b;
@@ -126,7 +203,6 @@ st.markdown("""
         background: #090c12;
         border: 1px solid #1e293b;
         border-top: none;
-        overflow: hidden;
     }
     .dispatch-table th {
         background: #111827;
@@ -149,11 +225,11 @@ st.markdown("""
         background: rgba(255, 255, 255, 0.025);
     }
 
-    /* Color Swatches */
+    /* Swatches & Elements */
     .color-swatch {
         display: inline-block;
-        width: 14px;
-        height: 14px;
+        width: 13px;
+        height: 13px;
         border-radius: 3px;
         margin-right: 8px;
         vertical-align: middle;
@@ -161,11 +237,10 @@ st.markdown("""
     }
     .color-silver { background: #94a3b8; }
     .color-bronze { background: #452c1e; }
-    .color-black { background: #000000; border-color: #334155; }
+    .color-black { background: #000000; border-color: #475569; }
     .color-blue { background: #1e3a8a; }
     .color-gray { background: #64748b; }
 
-    /* WO Links */
     .wo-link {
         color: #38bdf8;
         font-weight: 700;
@@ -205,6 +280,7 @@ st.markdown("""
         margin-left: 6px;
     }
 
+    /* Button */
     .stButton > button {
         background: linear-gradient(135deg, #8B141B 0%, #A61C24 60%, #C42630 100%) !important;
         color: #ffffff !important;
@@ -214,6 +290,7 @@ st.markdown("""
         padding: 10px 22px !important;
         box-shadow: 0 4px 16px rgba(166, 28, 36, 0.4) !important;
     }
+
     header, #MainMenu, footer { visibility: hidden; }
 </style>
 """, unsafe_allow_html=True)
@@ -247,40 +324,38 @@ def fetch_api_data(url):
 
 master_data_raw = fetch_api_data(master_api_url)
 master_data = master_data_raw.get("data") if master_data_raw and "data" in master_data_raw else master_data_raw
-
-# Live fetch from the new Powder Apps Script endpoint
 powder_data = fetch_api_data(powder_script_url)
 
 # ==============================================================================
-# HEADER
+# HEADER WITH VECTOR LOGO (No Image File Needed)
 # ==============================================================================
-col_head_left, col_head_right = st.columns([4, 1.2])
-
-with col_head_left:
-    logo_col, text_col = st.columns([0.65, 4])
-    with logo_col:
-        if os.path.exists("logo.png"):
-            st.image("logo.png", width=78)
-        elif os.path.exists("logo-icon.png"):
-            st.image("logo-icon.png", width=78)
-        else:
-            st.markdown("""
-            <div style="font-size:2.8rem; font-weight:900; line-height:0.9; color:#A61C24;">
-                <span style="color:#ffffff;">A</span>F
+st.markdown("""
+<div class="command-header">
+    <div style="display:flex; align-items:center; gap:20px;">
+        <svg width="76" height="66" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 120C15 60 65 18 150 15C110 32 75 62 50 120C40 98 25 110 10 120Z" fill="#A61C24"/>
+            <path d="M38 125L75 28H98L132 125H112L104 104H72L64 125H38ZM77 86H98L87 56L77 86Z" fill="#F3F4F6"/>
+            <path d="M96 52H142V67H115V78H136V92H115V125H96V52Z" fill="#A61C24"/>
+        </svg>
+        <div>
+            <div style="font-size:1.6rem; font-weight:900; letter-spacing:-0.03em; color:#ffffff; line-height:1.1;">
+                ARCHITECTURAL FABRICATION
             </div>
-            """, unsafe_allow_html=True)
+            <div style="font-size:0.85rem; font-weight:600; color:#9ca3af; letter-spacing:0.04em;">
+                OPERATIONS COMMAND CENTER &bull; SHOP FLOOR CONTROL
+            </div>
+        </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:14px;">
+        <span class="badge badge-green">
+            <span style="height:7px; width:7px; background:#4ade80; border-radius:50%; display:inline-block; margin-right:6px; box-shadow:0 0 8px #4ade80;"></span>
+            LIVE SYNC
+        </span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-    with text_col:
-        st.markdown("<h1 style='margin:0; padding:0; font-weight:900; font-size:2rem; letter-spacing:-0.03em;'>ARCHITECTURAL FABRICATION</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='color:#9ca3af; margin-top:-4px; font-weight:600; font-size:0.88rem;'>Operations Hub &bull; Shop Floor Control</p>", unsafe_allow_html=True)
-
-with col_head_right:
-    st.write("")
-    if st.button("🔄 Sync Live Feed", use_container_width=True):
-        st.cache_data.clear()
-        st.rerun()
-
-# Department Segmented Tabs
+# Visible Top Navigation Tabs
 tab_master, tab_powder, tab_logistics = st.tabs([
     "📊 Executive Master", 
     "🎨 Powder Dispatch Hub", 
@@ -298,72 +373,144 @@ with tab_master:
 
     hw_total = hw.get("total", 0)
     hw_comp = hw.get("complete", 0)
+    hw_pct = int((hw_comp / hw_total * 100)) if hw_total > 0 else 0
+
     pow_total = pow_sum.get("total", 0)
     pow_comp = pow_sum.get("complete", 0)
+    pow_pct = int((pow_comp / pow_total * 100)) if pow_total > 0 else 0
+
     log_total = log.get("total", 0)
     log_loaded = log.get("loaded", 0)
+    log_pct = int((log_loaded / log_total * 100)) if log_total > 0 else 0
 
-    c1, c2, c3, c4 = st.columns(4)
-    with c1:
+    # Top KPI Cards
+    k1, k2, k3, k4 = st.columns(4)
+    with k1:
         st.markdown(f"""
         <div class="hud-card">
-            <div class="hud-title">Hardware Staging</div>
-            <div class="hud-value">{hw_comp} <span style="font-size:1.1rem; color:#6b7280;">/ {hw_total}</span></div>
-            <span class="badge-tier-standard">{(hw_total - hw_comp)} Pending Action</span>
+            <div class="hud-title">Hardware Staging <span class="badge badge-crimson">{hw_pct}%</span></div>
+            <div class="hud-value">{hw_comp} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {hw_total}</span></div>
+            <span class="badge badge-dark">{(hw_total - hw_comp)} Pending Action</span>
+            <div class="bar-bg"><div class="bar-fill" style="width: {hw_pct}%;"></div></div>
         </div>
         """, unsafe_allow_html=True)
-    with c2:
+
+    with k2:
         st.markdown(f"""
         <div class="hud-card">
-            <div class="hud-title">Powder Runs</div>
-            <div class="hud-value">{pow_comp} <span style="font-size:1.1rem; color:#6b7280;">/ {pow_total}</span></div>
-            <span class="badge-tier-target">{pow_sum.get('required', 0)} Active Queue</span>
+            <div class="hud-title">Powder Queue <span class="badge badge-crimson">{pow_pct}%</span></div>
+            <div class="hud-value">{pow_comp} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {pow_total}</span></div>
+            <span class="badge badge-orange">{pow_sum.get('required', 0)} Runs Active</span>
+            <div class="bar-bg"><div class="bar-fill" style="width: {pow_pct}%;"></div></div>
         </div>
         """, unsafe_allow_html=True)
-    with c3:
+
+    with k3:
         st.markdown(f"""
         <div class="hud-card">
-            <div class="hud-title">Logistics Trucks</div>
-            <div class="hud-value">{log_loaded} <span style="font-size:1.1rem; color:#6b7280;">/ {log_total}</span></div>
-            <span class="badge-tier-standard">{log.get('pending', 0)} Scheduled</span>
+            <div class="hud-title">Logistics Trucks <span class="badge badge-crimson">{log_pct}%</span></div>
+            <div class="hud-value">{log_loaded} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {log_total}</span></div>
+            <span class="badge badge-dark">{log.get('pending', 0)} Scheduled</span>
+            <div class="bar-bg"><div class="bar-fill" style="width: {log_pct}%;"></div></div>
         </div>
         """, unsafe_allow_html=True)
-    with c4:
+
+    with k4:
+        plant_pct = int((hw_pct + pow_pct + log_pct) / 3) if hw_total > 0 else 0
         st.markdown(f"""
         <div class="hud-card">
-            <div class="hud-title">Master Feed</div>
-            <div class="hud-value" style="font-size:1.6rem; padding-top:6px;">ONLINE</div>
-            <span class="badge-tier-target">{datetime.now().strftime('%I:%M %p')} Sync</span>
+            <div class="hud-title">Master Feed <span class="badge badge-green">ONLINE</span></div>
+            <div class="hud-value">{plant_pct}%</div>
+            <span class="badge badge-dark">Sync: {datetime.now().strftime('%I:%M %p')}</span>
+            <div class="bar-bg"><div class="bar-fill" style="width: {plant_pct}%;"></div></div>
         </div>
         """, unsafe_allow_html=True)
+
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+
+    # Detailed Production Queues
+    col_left, col_right = st.columns(2)
+    with col_left:
+        st.markdown("<h4 style='letter-spacing:0.04em; font-weight:800;'>🔩 HARDWARE STAGING DISPATCH</h4>", unsafe_allow_html=True)
+        hw_items = master_data.get("hardware", []) if master_data else []
+        if hw_items:
+            for item in hw_items[:8]:
+                is_done = item.get("hwStatus", "").lower() == "complete"
+                badge_class = "badge-green" if is_done else "badge-crimson"
+                status_txt = "COMPLETE" if is_done else "REQUIRED"
+                st.markdown(f"""
+                <div class="queue-row">
+                    <div>
+                        <div style="font-weight:700; color:#ffffff; font-size:0.95rem;">{item.get('woName')} &bull; {item.get('release')}</div>
+                        <div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">Item: {item.get('itemNumber', 'Hardware')} &bull; Due: {item.get('dueDate')}</div>
+                    </div>
+                    <span class="badge {badge_class}">{status_txt}</span>
+                </div>
+                """, unsafe_allow_html=True)
+        else:
+            st.info("No active hardware jobs found.")
+
+    with col_right:
+        st.markdown("<h4 style='letter-spacing:0.04em; font-weight:800;'>🚚 LOGISTICS LOADOUT DISPATCH</h4>", unsafe_allow_html=True)
+        log_items = master_data.get("logistics", []) if master_data else []
+        if log_items:
+            for item in log_items[:8]:
+                is_loaded = item.get("isLoaded", False)
+                status_txt = "LOADED" if is_loaded else "SCHEDULED"
+                badge_class = "badge-green" if is_loaded else "badge-crimson"
+                st.markdown(f"""
+                <div class="queue-row">
+                    <div>
+                        <div style="font-weight:700; color:#ffffff; font-size:0.95rem;">{item.get('reqName')} &bull; {item.get('project')}</div>
+                        <div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">Superintendent: {item.get('superintendent', 'N/A')} &bull; Date: {item.get('loadDate')}</div>
+                    </div>
+                    <span class="badge {badge_class}">{status_txt}</span>
+                </div>
+                """, unsafe_allow_html=True)
+        else:
+            st.info("No active logistics loadouts found.")
 
 # ==============================================================================
 # TAB 2: POWDER COATING SHOP FLOOR DISPATCH DASHBOARD
 # ==============================================================================
 with tab_powder:
-    # Pull directly from live API if returned; fallback cleanly if syncing
+    # Pull jobs from powder_data endpoint; fallback to master_data powder items if needed
     dispatch_jobs = powder_data.get("jobs", []) if powder_data and "jobs" in powder_data else []
+
+    if not dispatch_jobs and master_data and "powder" in master_data:
+        # Construct fallback rows directly from master feed
+        for idx, p in enumerate(master_data.get("powder", [])):
+            dispatch_jobs.append({
+                "seq": idx + 1,
+                "color": p.get("color", "Standard"),
+                "workOrder": p.get("woName", "N/A"),
+                "release": p.get("release", ""),
+                "item": "POWDER",
+                "qty": 1,
+                "estBatches": p.get("batches", 1.0),
+                "crewHrs": 4.4,
+                "priority": "5: Target Account (T)" if p.get("isPriority") else "6: Standard"
+            })
 
     total_jobs_count = len(dispatch_jobs)
     total_scheduled_qty = int(sum([float(j.get("qty", 0)) for j in dispatch_jobs]))
     total_active_crew_hrs = round(sum([float(j.get("crewHrs", 0)) for j in dispatch_jobs]), 1)
 
-    # Top Trigger Action Bar
-    btn_c1, btn_c2 = st.columns([3, 1])
-    with btn_c1:
+    top_btn_col1, top_btn_col2 = st.columns([3, 1])
+    with top_btn_col1:
         st.markdown("<h3 style='margin:0; font-weight:800;'>🎨 Powder Coating Shop Floor Dispatch</h3>", unsafe_allow_html=True)
-    with btn_c2:
+    with top_btn_col2:
         if st.button("⚡ Recalculate Batch Analysis", use_container_width=True):
             with st.spinner("Executing Google Apps Script..."):
                 try:
                     res = requests.get(f"{powder_script_url}?action=analyze", timeout=60)
-                    st.success("Batch analysis recalculation finished!")
+                    st.success("Batch analysis recalculation completed!")
                 except Exception as e:
                     st.error(f"Error: {e}")
 
     st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
 
-    # High-Density Grid Container
+    # Master Dispatch Grid
     st.markdown(f"""
     <div class="dispatch-header">
         <span class="dispatch-header-title">■ REPORT SECTION 02 // ACTIVE MASTER DISPATCH QUEUE</span>
@@ -423,7 +570,6 @@ with tab_powder:
     </table>
     """, unsafe_allow_html=True)
 
-    # Footer Aggregates Bar
     st.markdown(f"""
     <div style="background:#0b0f19; border:1px solid #1e293b; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; display:flex; justify-content:space-between; font-size:0.75rem; font-weight:800; letter-spacing:0.06em; color:#94a3b8;">
         <div>TOTAL DISPATCHED WORK ORDERS: <span style="color:#ffffff;">{total_jobs_count}</span> &bull; TOTAL SCHEDULED QUANTITY: <span style="color:#ffffff;">{total_scheduled_qty} UNITS</span></div>
@@ -436,10 +582,11 @@ with tab_powder:
 # ==============================================================================
 with tab_logistics:
     st.markdown("<h3 style='margin:0; font-weight:800;'>🚚 Logistics & Planned Loadout</h3>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
     log_items = master_data.get("logistics", []) if master_data else []
     if log_items:
         df_log = pd.DataFrame(log_items)[["reqName", "project", "loadDate", "superintendent", "isLoaded"]]
         df_log.columns = ["Request", "Project", "Planned Date", "Superintendent", "Loaded"]
         st.dataframe(df_log, use_container_width=True, hide_index=True)
     else:
-        st.info("No active logistics loadouts.")
+        st.info("No active logistics loadouts found.")
