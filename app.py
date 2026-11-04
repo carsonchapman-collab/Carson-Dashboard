@@ -23,9 +23,8 @@ st.markdown("""
         font-family: 'Plus Jakarta Sans', sans-serif;
     }
     
-    /* Pure Deep Carbon Backdrop with Crimson Ambient Light */
     .stApp {
-        background: radial-gradient(circle at 15% 10%, #20080a 0%, #0c0d10 40%, #050608 100%);
+        background: radial-gradient(circle at 10% 5%, #18080a 0%, #0d0e12 35%, #050607 100%);
         color: #f3f4f6;
     }
 
@@ -34,38 +33,33 @@ st.markdown("""
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 14px 24px;
-        background: rgba(18, 19, 24, 0.7);
+        padding: 16px 24px;
+        background: rgba(18, 20, 26, 0.75);
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 20px;
         backdrop-filter: blur(20px);
-        margin-bottom: 24px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+        margin-bottom: 22px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
     }
 
-    /* Floating Pill Navigation Tabs */
+    /* Floating Navigation Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 12px;
-        background: rgba(14, 15, 18, 0.85);
+        gap: 10px;
+        background: rgba(14, 16, 20, 0.9);
         padding: 8px 12px;
         border-radius: 9999px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         width: fit-content;
-        margin-bottom: 26px;
+        margin-bottom: 24px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     }
     .stTabs [data-baseweb="tab"] {
         border-radius: 9999px;
-        padding: 10px 26px;
+        padding: 10px 24px;
         color: #9ca3af;
         border: 1px solid transparent !important;
         font-weight: 700;
-        font-size: 0.95rem;
-        transition: all 0.2s ease;
-    }
-    .stTabs [data-baseweb="tab"]:hover {
-        color: #ffffff;
-        border-color: rgba(166, 28, 36, 0.4) !important;
+        font-size: 0.92rem;
     }
     .stTabs [aria-selected="true"] {
         background: linear-gradient(135deg, #8B141B 0%, #A61C24 60%, #C42630 100%) !important;
@@ -74,90 +68,143 @@ st.markdown("""
         border: 1px solid rgba(255, 255, 255, 0.25) !important;
     }
 
-    /* Glowing HUD Metric Cards */
+    /* High-Vis HUD Stat Cards */
     .hud-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0%, rgba(166, 28, 36, 0.06) 100%);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0%, rgba(166, 28, 36, 0.05) 100%);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
-        padding: 22px 24px;
+        border-radius: 18px;
+        padding: 20px 22px;
         backdrop-filter: blur(18px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+        transition: transform 0.2s ease, border-color 0.2s ease;
         margin-bottom: 16px;
     }
     .hud-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-3px);
         border-color: rgba(166, 28, 36, 0.6);
-        box-shadow: 0 14px 38px rgba(166, 28, 36, 0.3);
     }
-
     .hud-title {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.09em;
+        letter-spacing: 0.08em;
         color: #9ca3af;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-
     .hud-value {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
         font-weight: 900;
         color: #ffffff;
-        margin: 10px 0 8px 0;
+        margin: 8px 0 6px 0;
         line-height: 1.1;
-        font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* Progress Indicators */
-    .bar-bg {
-        background: rgba(255, 255, 255, 0.07);
-        border-radius: 9999px;
-        height: 8px;
-        overflow: hidden;
-        margin-top: 10px;
-    }
-    .bar-fill {
-        background: linear-gradient(90deg, #8B141B 0%, #A61C24 65%, #EF4444 100%);
-        height: 100%;
-        border-radius: 9999px;
-        box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
-    }
-
-    /* Futuristic Status Badges */
-    .badge {
-        display: inline-flex;
+    /* Grid Dispatch Table Styling */
+    .dispatch-header {
+        background: #0f172a;
+        border: 1px solid #1e293b;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        padding: 12px 18px;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        padding: 4px 11px;
-        border-radius: 9999px;
-        font-size: 0.72rem;
+    }
+    .dispatch-header-title {
+        color: #38bdf8;
+        font-size: 0.85rem;
         font-weight: 800;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.08em;
+        font-family: 'JetBrains Mono', monospace;
     }
-    .badge-crimson {
-        background: rgba(166, 28, 36, 0.22);
-        color: #fca5a5;
-        border: 1px solid rgba(166, 28, 36, 0.55);
+    .dispatch-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #090c12;
+        border: 1px solid #1e293b;
+        border-top: none;
+        overflow: hidden;
     }
-    .badge-dark {
-        background: rgba(255, 255, 255, 0.06);
-        color: #e5e7eb;
-        border: 1px solid rgba(255, 255, 255, 0.12);
+    .dispatch-table th {
+        background: #111827;
+        color: #94a3b8;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        padding: 12px 14px;
+        text-align: left;
+        border-bottom: 1px solid #1e293b;
     }
-    .badge-green {
-        background: rgba(34, 197, 94, 0.16);
-        color: #4ade80;
-        border: 1px solid rgba(34, 197, 94, 0.4);
+    .dispatch-table td {
+        padding: 12px 14px;
+        font-size: 0.85rem;
+        color: #e2e8f0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        vertical-align: middle;
     }
-    .badge-orange {
-        background: rgba(249, 115, 22, 0.16);
-        color: #fb923c;
-        border: 1px solid rgba(249, 115, 22, 0.4);
+    .dispatch-table tr:hover td {
+        background: rgba(255, 255, 255, 0.025);
     }
 
-    /* Action Trigger Button */
+    /* Color Swatches */
+    .color-swatch {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        margin-right: 8px;
+        vertical-align: middle;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .color-silver { background: #94a3b8; }
+    .color-bronze { background: #452c1e; }
+    .color-black { background: #000000; border-color: #334155; }
+    .color-blue { background: #1e3a8a; }
+    .color-gray { background: #64748b; }
+
+    /* WO Links */
+    .wo-link {
+        color: #38bdf8;
+        font-weight: 700;
+        text-decoration: none;
+        font-family: 'JetBrains Mono', monospace;
+    }
+    .crew-hrs {
+        color: #38bdf8;
+        font-weight: 800;
+        font-family: 'JetBrains Mono', monospace;
+    }
+    .badge-tier-target {
+        background: rgba(245, 158, 11, 0.15);
+        color: #fbbf24;
+        border: 1px solid rgba(245, 158, 11, 0.35);
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+    .badge-tier-standard {
+        background: rgba(148, 163, 184, 0.1);
+        color: #cbd5e1;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    .tag-project {
+        background: #fef08a;
+        color: #854d0e;
+        font-size: 0.68rem;
+        font-weight: 800;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 6px;
+    }
+
     .stButton > button {
         background: linear-gradient(135deg, #8B141B 0%, #A61C24 60%, #C42630 100%) !important;
         color: #ffffff !important;
@@ -166,38 +213,8 @@ st.markdown("""
         border: 1px solid rgba(255, 255, 255, 0.2) !important;
         padding: 10px 22px !important;
         box-shadow: 0 4px 16px rgba(166, 28, 36, 0.4) !important;
-        transition: all 0.2s ease !important;
-        letter-spacing: 0.02em;
     }
-    .stButton > button:hover {
-        background: linear-gradient(135deg, #A61C24 0%, #C42630 100%) !important;
-        box-shadow: 0 6px 24px rgba(220, 38, 38, 0.6) !important;
-        transform: scale(1.02);
-    }
-
-    /* High Visibility Dark Queue Cards (Replaces standard white tables) */
-    .queue-row {
-        background: rgba(18, 19, 23, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-left: 3px solid #A61C24;
-        border-radius: 12px;
-        padding: 14px 18px;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: all 0.15s ease;
-    }
-    .queue-row:hover {
-        background: rgba(26, 28, 34, 0.85);
-        border-color: rgba(166, 28, 36, 0.4);
-        transform: translateX(3px);
-    }
-
-    /* Hide standard Streamlit header elements for a native app feel */
-    header {visibility: hidden;}
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
+    header, #MainMenu, footer { visibility: hidden; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -214,64 +231,64 @@ def load_registry():
 
 registry = load_registry()
 master_api_url = registry.get("Master Config", {}).get("data_feed_url", "")
+powder_script_url = registry.get("Powder Coating", [{}])[0].get("url", "")
 
 @st.cache_data(ttl=30)
-def fetch_master_data(url):
+def fetch_api_data(url):
     if not url:
         return None
     try:
         res = requests.get(url, timeout=30)
         if res.status_code == 200:
-            payload = res.json()
-            if payload.get("status") == "success":
-                return payload.get("data")
+            return res.json()
     except:
         pass
     return None
 
-master_data = fetch_master_data(master_api_url)
+master_data_raw = fetch_api_data(master_api_url)
+master_data = master_data_raw.get("data") if master_data_raw and "data" in master_data_raw else master_data_raw
+
+# Live fetch from the new Powder Apps Script endpoint
+powder_data = fetch_api_data(powder_script_url)
 
 # ==============================================================================
-# FUTURISTIC COMMAND HEADER & LOGO INTEGRATION
+# HEADER
 # ==============================================================================
-st.markdown("""
-<div class="command-header">
-    <div style="display:flex; align-items:center; gap:20px;">
-        <svg width="65" height="58" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Dynamic Crimson Arch Swoosh -->
-            <path d="M10 120C15 60 65 18 150 15C110 32 75 62 50 120C40 98 25 110 10 120Z" fill="#A61C24"/>
-            <!-- Italicized 'A' -->
-            <path d="M38 125L75 28H98L132 125H112L104 104H72L64 125H38ZM77 86H98L87 56L77 86Z" fill="#F3F4F6"/>
-            <!-- Bold Overlapping 'F' in Arch-Fab Crimson -->
-            <path d="M96 52H142V67H115V78H136V92H115V125H96V52Z" fill="#A61C24"/>
-        </svg>
-        <div>
-            <div style="font-size:1.6rem; font-weight:900; letter-spacing:-0.03em; color:#ffffff; line-height:1.1;">
-                ARCHITECTURAL FABRICATION
-            </div>
-            <div style="font-size:0.85rem; font-weight:600; color:#9ca3af; letter-spacing:0.04em;">
-                OPERATIONS COMMAND CENTER &bull; PLANT DISPATCH
-            </div>
-        </div>
-    </div>
-    <div style="display:flex; align-items:center; gap:14px;">
-        <span class="badge badge-green" style="font-size:0.75rem;">
-            <span style="height:7px; width:7px; background:#4ade80; border-radius:50%; display:inline-block; margin-right:6px; box-shadow:0 0 8px #4ade80;"></span>
-            LIVE SYNC
-        </span>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+col_head_left, col_head_right = st.columns([4, 1.2])
 
-# Floating Department Tabs (Each gets its own full dashboard)
+with col_head_left:
+    logo_col, text_col = st.columns([0.65, 4])
+    with logo_col:
+        if os.path.exists("logo.png"):
+            st.image("logo.png", width=78)
+        elif os.path.exists("logo-icon.png"):
+            st.image("logo-icon.png", width=78)
+        else:
+            st.markdown("""
+            <div style="font-size:2.8rem; font-weight:900; line-height:0.9; color:#A61C24;">
+                <span style="color:#ffffff;">A</span>F
+            </div>
+            """, unsafe_allow_html=True)
+
+    with text_col:
+        st.markdown("<h1 style='margin:0; padding:0; font-weight:900; font-size:2rem; letter-spacing:-0.03em;'>ARCHITECTURAL FABRICATION</h1>", unsafe_allow_html=True)
+        st.markdown("<p style='color:#9ca3af; margin-top:-4px; font-weight:600; font-size:0.88rem;'>Operations Hub &bull; Shop Floor Control</p>", unsafe_allow_html=True)
+
+with col_head_right:
+    st.write("")
+    if st.button("🔄 Sync Live Feed", use_container_width=True):
+        st.cache_data.clear()
+        st.rerun()
+
+# Department Segmented Tabs
 tab_master, tab_powder, tab_logistics = st.tabs([
-    "📊 Executive Command", 
-    "🎨 Powder Coating", 
+    "📊 Executive Master", 
+    "🎨 Powder Dispatch Hub", 
     "🚚 Logistics & Loadout"
 ])
 
 # ==============================================================================
-# TAB 1: EXECUTIVE COMMAND
+# TAB 1: EXECUTIVE MASTER DASHBOARD
 # ==============================================================================
 with tab_master:
     summary = master_data.get("summary", {}) if master_data else {}
@@ -281,231 +298,148 @@ with tab_master:
 
     hw_total = hw.get("total", 0)
     hw_comp = hw.get("complete", 0)
-    hw_pct = int((hw_comp / hw_total * 100)) if hw_total > 0 else 0
-
     pow_total = pow_sum.get("total", 0)
     pow_comp = pow_sum.get("complete", 0)
-    pow_pct = int((pow_comp / pow_total * 100)) if pow_total > 0 else 0
-
     log_total = log.get("total", 0)
     log_loaded = log.get("loaded", 0)
-    log_pct = int((log_loaded / log_total * 100)) if log_total > 0 else 0
 
-    # Top KPI HUD Pods
-    k1, k2, k3, k4 = st.columns(4)
-    with k1:
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
         st.markdown(f"""
         <div class="hud-card">
-            <div class="hud-title">Hardware Staging <span class="badge badge-crimson">{hw_pct}%</span></div>
-            <div class="hud-value">{hw_comp} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {hw_total}</span></div>
-            <span class="badge badge-dark">{(hw_total - hw_comp)} Pending Prep</span>
-            <div class="bar-bg"><div class="bar-fill" style="width: {hw_pct}%;"></div></div>
+            <div class="hud-title">Hardware Staging</div>
+            <div class="hud-value">{hw_comp} <span style="font-size:1.1rem; color:#6b7280;">/ {hw_total}</span></div>
+            <span class="badge-tier-standard">{(hw_total - hw_comp)} Pending Action</span>
         </div>
         """, unsafe_allow_html=True)
-
-    with k2:
+    with c2:
         st.markdown(f"""
         <div class="hud-card">
-            <div class="hud-title">Powder Queue <span class="badge badge-crimson">{pow_pct}%</span></div>
-            <div class="hud-value">{pow_comp} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {pow_total}</span></div>
-            <span class="badge badge-orange">{pow_sum.get('required', 0)} Runs Active</span>
-            <div class="bar-bg"><div class="bar-fill" style="width: {pow_pct}%;"></div></div>
+            <div class="hud-title">Powder Runs</div>
+            <div class="hud-value">{pow_comp} <span style="font-size:1.1rem; color:#6b7280;">/ {pow_total}</span></div>
+            <span class="badge-tier-target">{pow_sum.get('required', 0)} Active Queue</span>
         </div>
         """, unsafe_allow_html=True)
-
-    with k3:
+    with c3:
         st.markdown(f"""
         <div class="hud-card">
-            <div class="hud-title">Logistics Trucks <span class="badge badge-crimson">{log_pct}%</span></div>
-            <div class="hud-value">{log_loaded} <span style="font-size:1.1rem; color:#6b7280; font-weight:600;">/ {log_total}</span></div>
-            <span class="badge badge-dark">{log.get('pending', 0)} Awaiting Load</span>
-            <div class="bar-bg"><div class="bar-fill" style="width: {log_pct}%;"></div></div>
+            <div class="hud-title">Logistics Trucks</div>
+            <div class="hud-value">{log_loaded} <span style="font-size:1.1rem; color:#6b7280;">/ {log_total}</span></div>
+            <span class="badge-tier-standard">{log.get('pending', 0)} Scheduled</span>
         </div>
         """, unsafe_allow_html=True)
-
-    with k4:
-        plant_pct = int((hw_pct + pow_pct + log_pct) / 3) if hw_total > 0 else 0
+    with c4:
         st.markdown(f"""
         <div class="hud-card">
-            <div class="hud-title">Plant Throughput <span class="badge badge-green">OPTIMAL</span></div>
-            <div class="hud-value">{plant_pct}%</div>
-            <span class="badge badge-dark">Synced {datetime.now().strftime('%I:%M %p')}</span>
-            <div class="bar-bg"><div class="bar-fill" style="width: {plant_pct}%;"></div></div>
+            <div class="hud-title">Master Feed</div>
+            <div class="hud-value" style="font-size:1.6rem; padding-top:6px;">ONLINE</div>
+            <span class="badge-tier-target">{datetime.now().strftime('%I:%M %p')} Sync</span>
         </div>
         """, unsafe_allow_html=True)
-
-    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
-
-    # High-Density Live Queues
-    q_col1, q_col2 = st.columns(2)
-    with q_col1:
-        st.markdown("<h4 style='letter-spacing:0.04em;'>🔩 HARDWARE STAGING DISPATCH</h4>", unsafe_allow_html=True)
-        hw_items = master_data.get("hardware", []) if master_data else []
-        if hw_items:
-            for item in hw_items[:6]:
-                is_done = item.get("hwStatus", "").lower() == "complete"
-                badge_class = "badge-green" if is_done else "badge-crimson"
-                status_txt = "COMPLETE" if is_done else "REQUIRED"
-                st.markdown(f"""
-                <div class="queue-row">
-                    <div>
-                        <div style="font-weight:700; color:#ffffff; font-size:0.95rem;">{item.get('woName')} &bull; {item.get('release')}</div>
-                        <div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">Item: {item.get('itemNumber', 'Hardware')} &bull; Due: {item.get('dueDate')}</div>
-                    </div>
-                    <span class="badge {badge_class}">{status_txt}</span>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.info("No active hardware staging jobs.")
-
-    with q_col2:
-        st.markdown("<h4 style='letter-spacing:0.04em;'>🎨 POWDER COATING HIGH-PRIORITY RUNS</h4>", unsafe_allow_html=True)
-        pow_items = master_data.get("powder", []) if master_data else []
-        if pow_items:
-            for item in pow_items[:6]:
-                status = item.get("status", "Required").upper()
-                badge_class = "badge-green" if "COMPLETE" in status else ("badge-crimson" if "REQUIRED" in status else "badge-orange")
-                st.markdown(f"""
-                <div class="queue-row">
-                    <div>
-                        <div style="font-weight:700; color:#ffffff; font-size:0.95rem;">{item.get('woName')} &bull; {item.get('color', 'Standard')}</div>
-                        <div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">{item.get('batches', 1)} Batches &bull; {item.get('release')}</div>
-                    </div>
-                    <span class="badge {badge_class}">{status}</span>
-                </div>
-                """, unsafe_allow_html=True)
-        else:
-            st.info("No active powder coating jobs.")
 
 # ==============================================================================
-# TAB 2: POWDER COATING DEDICATED DASHBOARD
+# TAB 2: POWDER COATING SHOP FLOOR DISPATCH DASHBOARD
 # ==============================================================================
 with tab_powder:
-    st.markdown("<h3 style='font-weight:800; letter-spacing:-0.02em;'>🎨 Powder Coating Operations & Dispatch Hub</h3>", unsafe_allow_html=True)
+    # Pull directly from live API if returned; fallback cleanly if syncing
+    dispatch_jobs = powder_data.get("jobs", []) if powder_data and "jobs" in powder_data else []
 
-    # Department Metrics Bar
-    pow_items = master_data.get("powder", []) if master_data else []
-    total_batches = sum([float(p.get("batches") or 1) for p in pow_items])
-    total_runs = len(pow_items)
-    pending_runs = sum([1 for p in pow_items if p.get("status", "").lower() != "complete"])
+    total_jobs_count = len(dispatch_jobs)
+    total_scheduled_qty = int(sum([float(j.get("qty", 0)) for j in dispatch_jobs]))
+    total_active_crew_hrs = round(sum([float(j.get("crewHrs", 0)) for j in dispatch_jobs]), 1)
 
-    p_col1, p_col2, p_col3, p_col4 = st.columns(4)
-    with p_col1:
-        st.markdown(f"""
-        <div class="hud-card">
-            <div class="hud-title">Active Queue Jobs</div>
-            <div class="hud-value">{total_runs}</div>
-            <span class="badge badge-crimson">{pending_runs} Pending Oven Runs</span>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with p_col2:
-        st.markdown(f"""
-        <div class="hud-card">
-            <div class="hud-title">Scheduled Batches</div>
-            <div class="hud-value">{total_batches:.1f}</div>
-            <span class="badge badge-dark">Capacity Target: 40/Wk</span>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with p_col3:
-        st.markdown("""
-        <div class="hud-card">
-            <div class="hud-title">Color Transitions</div>
-            <div class="hud-value">Light &rarr; Dark</div>
-            <span class="badge badge-green">Gang Sequencing Active</span>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with p_col4:
-        st.markdown("""
-        <div class="hud-card">
-            <div class="hud-title">Automation Trigger</div>
-            <div class="hud-value" style="font-size:1.4rem; padding-top:8px;">Ready</div>
-            <span class="badge badge-green">Web App Connected</span>
-        </div>
-        """, unsafe_allow_html=True)
-
-    st.markdown("---")
-
-    # Automated Trigger Console
-    col_trigger_desc, col_trigger_btn = st.columns([3, 1])
-    with col_trigger_desc:
-        st.markdown("#### ⚡ Batch & Labor Analysis Automation")
-        st.caption("Aggregates actual labor hours, powder batches, and priority breakdown across all active Work Orders.")
-    with col_trigger_btn:
-        powder_scripts = registry.get("Powder Coating", [])
-        if powder_scripts and st.button("▶ Run Labor Analysis", use_container_width=True):
+    # Top Trigger Action Bar
+    btn_c1, btn_c2 = st.columns([3, 1])
+    with btn_c1:
+        st.markdown("<h3 style='margin:0; font-weight:800;'>🎨 Powder Coating Shop Floor Dispatch</h3>", unsafe_allow_html=True)
+    with btn_c2:
+        if st.button("⚡ Recalculate Batch Analysis", use_container_width=True):
             with st.spinner("Executing Google Apps Script..."):
                 try:
-                    res = requests.get(powder_scripts[0]["url"], timeout=60)
-                    if res.status_code == 200:
-                        data = res.json()
-                        if data.get("status") == "success":
-                            st.success("Batch analysis successfully updated in Google Sheets!")
-                            s = data.get("summary", {})
-                            m1, m2, m3 = st.columns(3)
-                            m1.metric("WOs Processed", s.get("totalWOCount", 0))
-                            m2.metric("Powder Batches", s.get("totalBatches", 0))
-                            m3.metric("Labor Hours", round(s.get("totalLabor", 0), 1))
-                        else:
-                            st.error(data.get("message"))
-                except Exception as err:
-                    st.error(f"Error: {err}")
+                    res = requests.get(f"{powder_script_url}?action=analyze", timeout=60)
+                    st.success("Batch analysis recalculation finished!")
+                except Exception as e:
+                    st.error(f"Error: {e}")
 
     st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
 
-    # Full Powder Floor Dispatch
-    st.markdown("#### 📋 Full Powder Schedule & Batch Dispatch")
-    if pow_items:
-        for p in pow_items:
-            status = p.get("status", "Required").upper()
-            badge_class = "badge-green" if "COMPLETE" in status else ("badge-crimson" if "REQUIRED" in status else "badge-orange")
-            notes = p.get("notes", "No special instructions")
-            st.markdown(f"""
-            <div class="queue-row" style="margin-bottom:8px;">
-                <div style="flex:2;">
-                    <span style="font-weight:800; color:#ffffff; font-size:1.05rem;">{p.get('woName')}</span>
-                    <span style="color:#9ca3af; font-size:0.85rem; margin-left:12px;">{p.get('release')}</span>
-                    <div style="color:#6b7280; font-size:0.8rem; margin-top:3px;">{notes}</div>
-                </div>
-                <div style="flex:1; text-align:center;">
-                    <span class="badge badge-dark" style="font-size:0.8rem;">🎨 {p.get('color', 'Standard')}</span>
-                </div>
-                <div style="flex:0.8; text-align:center; font-weight:800; color:#ffffff; font-size:1rem;">
-                    {p.get('batches', 1)} <span style="font-size:0.75rem; color:#6b7280;">BATCHES</span>
-                </div>
-                <div style="flex:0.6; text-align:right;">
-                    <span class="badge {badge_class}">{status}</span>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-    else:
-        st.info("No powder items found.")
+    # High-Density Grid Container
+    st.markdown(f"""
+    <div class="dispatch-header">
+        <span class="dispatch-header-title">■ REPORT SECTION 02 // ACTIVE MASTER DISPATCH QUEUE</span>
+        <span style="color:#94a3b8; font-size:0.75rem; font-weight:700;">{total_jobs_count} OF {total_jobs_count} JOBS DISPLAYED &bull; GANG-SEQUENCED GRID</span>
+    </div>
+    <table class="dispatch-table">
+        <thead>
+            <tr>
+                <th style="width:40px;">SEQ</th>
+                <th>POWDER COLOR (GANG)</th>
+                <th>WORK ORDER</th>
+                <th>PRODUCTION RELEASE NAME</th>
+                <th>WO ITEM</th>
+                <th style="text-align:center;">QTY (UNITS)</th>
+                <th style="text-align:center;">EST. BATCHES</th>
+                <th style="text-align:center;">CREW HRS</th>
+                <th>PRIORITY TIER</th>
+            </tr>
+        </thead>
+        <tbody>
+    """, unsafe_allow_html=True)
+
+    def get_swatch_class(color_name):
+        c = str(color_name).lower()
+        if 'silver' in c: return 'color-silver'
+        if 'bronze' in c: return 'color-bronze'
+        if 'black' in c: return 'color-black'
+        if '5003' in c or 'blue' in c: return 'color-blue'
+        return 'color-gray'
+
+    rows_html = ""
+    for job in dispatch_jobs:
+        swatch = get_swatch_class(job.get("color"))
+        prio = str(job.get("priority", ""))
+        prio_badge = "badge-tier-target" if "Target" in prio or "5" in prio else "badge-tier-standard"
+        tag_html = f"<span class='tag-project'>{job.get('tag')}</span>" if "tag" in job and job.get("tag") else ""
+
+        rows_html += f"""
+        <tr>
+            <td style="font-weight:700; color:#94a3b8;">{job.get('seq')}</td>
+            <td><span class="color-swatch {swatch}"></span><span style="font-weight:600;">{job.get('color')}</span></td>
+            <td><a href="#" class="wo-link">{job.get('workOrder')}</a></td>
+            <td>{job.get('release')} {tag_html}</td>
+            <td style="font-weight:600; font-size:0.8rem; color:#94a3b8;">{job.get('item')}</td>
+            <td style="text-align:center; font-weight:700;">{job.get('qty')}</td>
+            <td style="text-align:center; font-family:'JetBrains Mono';">{job.get('estBatches')}</td>
+            <td style="text-align:center;" class="crew-hrs">{job.get('crewHrs')}</td>
+            <td><span class="{prio_badge}">{prio}</span></td>
+        </tr>
+        """
+
+    if not rows_html:
+        rows_html = "<tr><td colspan='9' style='text-align:center; padding:24px; color:#9ca3af;'>No jobs currently in active dispatch queue.</td></tr>"
+
+    st.markdown(rows_html + """
+        </tbody>
+    </table>
+    """, unsafe_allow_html=True)
+
+    # Footer Aggregates Bar
+    st.markdown(f"""
+    <div style="background:#0b0f19; border:1px solid #1e293b; border-top:none; border-radius:0 0 12px 12px; padding:12px 18px; display:flex; justify-content:space-between; font-size:0.75rem; font-weight:800; letter-spacing:0.06em; color:#94a3b8;">
+        <div>TOTAL DISPATCHED WORK ORDERS: <span style="color:#ffffff;">{total_jobs_count}</span> &bull; TOTAL SCHEDULED QUANTITY: <span style="color:#ffffff;">{total_scheduled_qty} UNITS</span></div>
+        <div>TOTAL ACTIVE CREW HOURS: <span style="color:#38bdf8; font-size:0.9rem;">{total_active_crew_hrs} HRS</span></div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==============================================================================
-# TAB 3: LOGISTICS & LOADOUT DEDICATED DASHBOARD
+# TAB 3: LOGISTICS & LOADOUT
 # ==============================================================================
 with tab_logistics:
-    st.markdown("<h3 style='font-weight:800; letter-spacing:-0.02em;'>🚚 Logistics Dispatch & Truck Loadout</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='margin:0; font-weight:800;'>🚚 Logistics & Planned Loadout</h3>", unsafe_allow_html=True)
     log_items = master_data.get("logistics", []) if master_data else []
-
     if log_items:
-        for item in log_items:
-            is_loaded = item.get("isLoaded", False)
-            status_txt = "LOADED" if is_loaded else "SCHEDULED"
-            badge_class = "badge-green" if is_loaded else "badge-crimson"
-            st.markdown(f"""
-            <div class="queue-row">
-                <div>
-                    <span style="font-weight:800; color:#ffffff; font-size:1rem;">{item.get('reqName')}</span>
-                    <span style="color:#9ca3af; font-size:0.85rem; margin-left:12px;">{item.get('project')}</span>
-                    <div style="color:#6b7280; font-size:0.8rem; margin-top:2px;">
-                        Superintendent: {item.get('superintendent', 'N/A')} &bull; Target Load Date: {item.get('loadDate')}
-                    </div>
-                </div>
-                <span class="badge {badge_class}">{status_txt}</span>
-            </div>
-            """, unsafe_allow_html=True)
+        df_log = pd.DataFrame(log_items)[["reqName", "project", "loadDate", "superintendent", "isLoaded"]]
+        df_log.columns = ["Request", "Project", "Planned Date", "Superintendent", "Loaded"]
+        st.dataframe(df_log, use_container_width=True, hide_index=True)
     else:
-        st.info("No logistics requests active.")
+        st.info("No active logistics loadouts.")
