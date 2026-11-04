@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # ==============================================================================
-# OFFICIAL ARCH-FAB LOGO (Base64 URI / Inline Vector Asset)
+# OFFICIAL ARCH-FAB LOGO
 # ==============================================================================
 ARCH_FAB_LOGO = (
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="72" height="72">'
@@ -38,7 +38,6 @@ html, body, [class*="css"] {
     color: #f3f4f6;
 }
 
-/* Command Header Container */
 .command-header {
     display: flex;
     align-items: center;
@@ -52,7 +51,6 @@ html, body, [class*="css"] {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
 }
 
-/* Top Navigation Tabs */
 .stTabs [data-baseweb="tab-list"] {
     gap: 12px !important;
     background: rgba(18, 20, 26, 0.95) !important;
@@ -93,7 +91,6 @@ html, body, [class*="css"] {
     font-weight: 900 !important;
 }
 
-/* Metric Cards */
 .hud-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(166, 28, 36, 0.06) 100%);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -133,7 +130,6 @@ html, body, [class*="css"] {
     border-radius: 9999px;
 }
 
-/* Badges */
 .badge {
     display: inline-flex;
     align-items: center;
@@ -197,9 +193,9 @@ header, #MainMenu, footer { visibility: hidden; }
 """, unsafe_allow_html=True)
 
 # ==============================================================================
-# DATA LOADERS & API SYNC
+# FAST CACHED DATA FETCHERS (5-second timeout, non-blocking)
 # ==============================================================================
-@st.cache_data(ttl=60)
+@st.cache_data(ttl=120)
 def load_registry():
     try:
         with open("scripts.json", "r") as f:
@@ -211,24 +207,20 @@ registry = load_registry()
 master_api_url = registry.get("Master Config", {}).get("data_feed_url", "")
 powder_script_url = registry.get("Powder Coating", [{}])[0].get("url", "")
 
-@st.cache_data(ttl=30)
+@st.cache_data(ttl=45)
 def fetch_api_data(url):
     if not url:
         return None
     try:
-        res = requests.get(url, timeout=30)
+        res = requests.get(url, timeout=6)
         if res.status_code == 200:
             return res.json()
     except:
         pass
     return None
 
-master_data_raw = fetch_api_data(master_api_url)
-master_data = master_data_raw.get("data") if master_data_raw and "data" in master_data_raw else master_data_raw
-powder_data = fetch_api_data(powder_script_url)
-
 # ==============================================================================
-# COMMAND HEADER (Zero-Indent Construction)
+# HEADER (Loads Immediately)
 # ==============================================================================
 h_left, h_right = st.columns([4, 1.2])
 
@@ -268,6 +260,10 @@ tab_master, tab_powder, tab_logistics = st.tabs([
     "🎨 Powder Dispatch Hub", 
     "🚚 Logistics & Loadout"
 ])
+
+# Lazy-fetch data so tabs can render without locking the UI
+master_data_raw = fetch_api_data(master_api_url)
+master_data = master_data_raw.get("data") if master_data_raw and "data" in master_data_raw else master_data_raw
 
 # ==============================================================================
 # TAB 1: EXECUTIVE MASTER DASHBOARD
@@ -355,7 +351,7 @@ with tab_master:
                     unsafe_allow_html=True
                 )
         else:
-            st.info("No active hardware jobs found.")
+            st.info("Waiting for hardware data feed...")
 
     with col_right:
         st.markdown("<h4 style='letter-spacing:0.04em; font-weight:800;'>🚚 LOGISTICS LOADOUT DISPATCH</h4>", unsafe_allow_html=True)
@@ -376,12 +372,14 @@ with tab_master:
                     unsafe_allow_html=True
                 )
         else:
-            st.info("No active logistics loadouts found.")
+            st.info("Waiting for logistics data feed...")
 
 # ==============================================================================
-# TAB 2: POWDER COATING SHOP FLOOR DISPATCH (NATIVE HIGH-PERFORMANCE GRID)
+# TAB 2: POWDER COATING SHOP FLOOR DISPATCH
 # ==============================================================================
 with tab_powder:
+    # Only fetch powder data if user navigates here or needs it
+    powder_data = fetch_api_data(powder_script_url)
     dispatch_raw = powder_data.get("jobs", []) if powder_data and "jobs" in powder_data else []
 
     if not dispatch_raw and master_data and "powder" in master_data:
