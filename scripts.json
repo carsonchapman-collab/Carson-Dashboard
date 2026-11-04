@@ -1,0 +1,9 @@
+{
+  "Powder Coating": [
+    {
+      "name": "Run Batch & Labor Analysis",
+      "url": "https://script.google.com/macros/s/AKfycbyDfbAgKHr30bOwnGJdw2tIoPJaohFlthaYprU20sXeuKq7lfbAtjKGEaiYlftGegYYJw/exec",
+      "description": "Aggregates actual labor hours and powder batches across work orders, priorities, and schedule status."
+    }
+  ]
+}
